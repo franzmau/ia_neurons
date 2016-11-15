@@ -34,10 +34,14 @@ public class Perceptron {
         for(i = 0; i < n; i++) {
             weights[i] = r.nextDouble();
         }
+       
 
         for(i = 0; i < epoch; i++) { 
             total_error = 0;
             for(int j = 0; j < p; j++) {
+            	 
+            	
+            	   
                 CalculateOutput(inputs_weights[j]);
                 this.error = outputs[j] - output;
                 
@@ -60,6 +64,7 @@ public class Perceptron {
     {
         double sum = 0.0;
         for(int i = 0; i < inputs.length; i++) {
+        	
             sum += weights[i] * inputs[i];
         }
 
