@@ -5,7 +5,7 @@ public class Perceptron {
 
     private double[] weights;
     private double threshold;
-    private int output;
+    private double output;
     private int error;
     private double delta;
     
@@ -60,22 +60,34 @@ public class Perceptron {
 
     }
 
-    public void CalculateOutput(double[] inputs)
-    {
+    public void CalculateOutput(double[] inputs, int selector){ // 1 for step, 2 for sigmuoid
         double sum = 0.0;
         for(int i = 0; i < inputs.length; i++) {
         	
             sum += weights[i] * inputs[i];
         }
 
-        if(sum > threshold)
-            this.output = 1;
-        else
-            this.output = 0;
+		if(selector == 1){
+			if(sum > threshold)
+				this.output = 1.0;
+			else
+				this.output = 0.0;
+		} else {
+			this.output = 3/(1 + Math.exp(this.treshold - sum))
+		}
     }
     
     public int getOutput(){
     	return this.output;
     }
+	
+	/*public void CalculateOutputSigmuoid(double[] inputs){
+		double sum = 0.0;
+        for(int i = 0; i < inputs.length; i++) {
+        	
+            sum += weights[i] * inputs[i];
+        }
+		this.output = 2/(1 + Math.exp(this.treshold - sum))
+	}*/
 
 }
